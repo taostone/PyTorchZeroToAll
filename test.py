@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 
+# 测试用
 # 给定的新数据点
 x_data_new = np.array([0, 1, 2, 4])
 y_data_new = np.array([11, 6, -1, 3])
