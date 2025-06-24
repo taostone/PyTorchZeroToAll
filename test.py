@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 from scipy.interpolate import interp1d
+
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 # 给定的新数据点
 x_data_new = np.array([0, 1, 2, 4])
