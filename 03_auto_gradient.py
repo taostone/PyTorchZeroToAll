@@ -17,7 +17,7 @@ def loss(y_pred, y_val):
 print("Prediction (before training)",  4, forward(4).item())
 
 # Training loop
-for epoch in range(10):
+for epoch in range(100):
     for x_val, y_val in zip(x_data, y_data):
         y_pred = forward(x_val) # 1) Forward pass
         l = loss(y_pred, y_val) # 2) Compute loss
