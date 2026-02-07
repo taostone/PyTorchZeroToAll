@@ -53,5 +53,19 @@ for epoch in range(1000):
 print(f'\nLet\'s predict the hours need to score above 50%\n{"=" * 50}')
 hour_var = model(tensor([[1.0]]))
 print(f'Prediction after 1 hour of training: {hour_var.item():.4f} | Above 50%: {hour_var.item() > 0.5}')
+
+
+print(f'\nLet\'s predict the hours need to score above 50%\n{"=" * 50}')
+hour_var = model(tensor([[2.0]]))
+print(f'Prediction after 2 hour of training: {hour_var.item():.4f} | Above 50%: {hour_var.item() > 0.5}')
+
+print(f'\nLet\'s predict the hours need to score above 50%\n{"=" * 50}')
+hour_var = model(tensor([[3.0]]))
+print(f'Prediction after 3 hour of training: {hour_var.item():.4f} | Above 50%: {hour_var.item() > 0.5}')
+
+print(f'\nLet\'s predict the hours need to score above 50%\n{"=" * 50}')
+hour_var = model(tensor([[3.5]]))
+print(f'Prediction after 3.5 hour of training: {hour_var.item():.4f} | Above 50%: {hour_var.item() > 0.5}')
+
 hour_var = model(tensor([[7.0]]))
 print(f'Prediction after 7 hours of training: {hour_var.item():.4f} | Above 50%: { hour_var.item() > 0.5}')

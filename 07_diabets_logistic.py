@@ -1,7 +1,8 @@
 from torch import nn, optim, from_numpy
 import numpy as np
+import matplotlib.pyplot as plt
 
-xy = np.loadtxt('./data/diabetes.csv.gz', delimiter=',', dtype=np.float32)
+xy = np.loadtxt('./PyTorchZeroToAll/data/diabetes.csv.gz', delimiter=',', dtype=np.float32)
 x_data = from_numpy(xy[:, 0:-1])
 y_data = from_numpy(xy[:, [-1]])
 print(f'X\'s shape: {x_data.shape} | Y\'s shape: {y_data.shape}')
@@ -30,6 +31,9 @@ class Model(nn.Module):
         y_pred = self.sigmoid(self.l3(out2))
         return y_pred
 
+l_list = []
+e_list = []
+
 
 # our model
 model = Model()
@@ -41,16 +45,27 @@ model = Model()
 criterion = nn.BCELoss(reduction='mean')
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
+e = 0
 # Training loop
-for epoch in range(100):
-    # Forward pass: Compute predicted y by passing x to the model
+for epoch in range(1000):
+    # Forward pass: Compute predicted y by passing x to the modely
     y_pred = model(x_data)
 
     # Compute and print loss
     loss = criterion(y_pred, y_data)
+    l_list.append(loss.item())
+    e_list.append(e)
+    e += 1
     print(f'Epoch: {epoch + 1}/100 | Loss: {loss.item():.4f}')
 
     # Zero gradients, perform a backward pass, and update the weights.
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
+
+
+# Plot it all
+plt.plot(e_list, l_list)
+plt.ylabel('Loss')
+plt.xlabel('w')
+plt.show()
